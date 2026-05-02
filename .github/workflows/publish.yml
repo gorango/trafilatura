@@ -1,0 +1,124 @@
+name: Node Bindings
+on:
+  push:
+    tags:
+      - "v*"
+  pull_request:
+    branches: [master]
+permissions:
+  id-token: write
+  contents: write
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        include:
+          - target: x86_64-unknown-linux-gnu
+            platform: ubuntu-latest
+          - target: aarch64-unknown-linux-gnu
+            platform: ubuntu-latest
+          - target: x86_64-apple-darwin
+            platform: macos-latest
+          - target: aarch64-apple-darwin
+            platform: macos-latest
+          - target: x86_64-pc-windows-msvc
+            platform: windows-latest
+          - target: aarch64-pc-windows-msvc
+            platform: windows-latest
+    runs-on: ${{ matrix.platform }}
+    steps:
+      - uses: actions/checkout@v5
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.target }}
+      - name: Setup Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: 24
+
+      - name: Install ARM64 Linker (Linux)
+        if: matrix.target == 'aarch64-unknown-linux-gnu'
+        run: sudo apt-get update && sudo apt-get install -y gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build -- --target ${{ matrix.target }}
+        env:
+          CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER: aarch64-linux-gnu-gcc
+      - name: Upload artifact
+        uses: actions/upload-artifact@v5
+        with:
+          name: bindings-${{ matrix.target }}
+          path: lib/*.node
+
+  test:
+    needs: build
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: ubuntu-latest
+            target: x86_64-unknown-linux-gnu
+          - platform: macos-15-intel
+            target: x86_64-apple-darwin
+          - platform: macos-latest
+            target: aarch64-apple-darwin
+          - platform: windows-latest
+            target: x86_64-pc-windows-msvc
+    runs-on: ${{ matrix.platform }}
+    steps:
+      - uses: actions/checkout@v5
+      - name: Setup Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: 24
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+      - name: Download artifact
+        uses: actions/download-artifact@v5
+        with:
+          name: bindings-${{ matrix.target }}
+          path: lib/
+      - name: Run tests
+        run: npm test
+
+  publish:
+    needs: test
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/')
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          registry-url: "https://registry.npmjs.org"
+      - name: Install dependencies
+        run: npm ci
+      - name: Download all artifacts
+        uses: actions/download-artifact@v5
+        with:
+          pattern: bindings-*
+          path: artifacts
+          merge-multiple: true
+      - name: Prepare Artifacts for NPM
+        run: |
+          npm run prepublishOnly
+          npm run artifacts
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish to NPM
+        run: |
+          for dir in npm/*; do
+            if [ -d "$dir" ]; then
+              echo "Publishing $dir..."
+              (cd "$dir" && npm publish --access public)
+            fi
+          done
+          echo "Publishing root package..."
+          npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

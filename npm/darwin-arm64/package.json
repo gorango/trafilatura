@@ -1,0 +1,19 @@
+{
+  "name": "trafilatura-darwin-arm64",
+  "version": "0.1.0",
+  "cpu": [
+    "arm64"
+  ],
+  "main": "trafilatura.darwin-arm64.node",
+  "files": [
+    "trafilatura.darwin-arm64.node"
+  ],
+  "description": "Fast and accurate web content extraction",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gorango/trafilatura.git"
+  },
+  "os": [
+    "darwin"
+  ]
+}

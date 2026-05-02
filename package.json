@@ -1,0 +1,44 @@
+{
+  "name": "trafilatura",
+  "version": "0.0.0",
+  "description": "Fast and accurate web content extraction",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gorango/trafilatura.git"
+  },
+  "files": [
+    "lib"
+  ],
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "napi build --platform --release --esm --output-dir lib",
+    "test": "node --test lib/index.test.js",
+    "artifacts": "napi artifacts",
+    "prepublishOnly": "napi prepublish -t npm"
+  },
+  "devDependencies": {
+    "@napi-rs/cli": "^3.6.2",
+    "@types/node": "^25.6.0"
+  },
+  "optionalDependencies": {
+    "trafilatura-darwin-arm64": "0.1.0",
+    "trafilatura-darwin-x64": "0.1.0",
+    "trafilatura-linux-arm64-gnu": "0.1.0",
+    "trafilatura-linux-x64-gnu": "0.1.0",
+    "trafilatura-win32-arm64-msvc": "0.1.0",
+    "trafilatura-win32-x64-msvc": "0.1.0"
+  },
+  "napi": {
+    "binaryName": "trafilatura",
+    "targets": [
+      "x86_64-unknown-linux-gnu",
+      "aarch64-unknown-linux-gnu",
+      "x86_64-apple-darwin",
+      "aarch64-apple-darwin",
+      "x86_64-pc-windows-msvc",
+      "aarch64-pc-windows-msvc"
+    ]
+  }
+}
