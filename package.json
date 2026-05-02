@@ -2,6 +2,7 @@
   "name": "trafilatura",
   "version": "0.1.0",
   "description": "Fast and accurate web content extraction",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gorango/trafilatura.git"

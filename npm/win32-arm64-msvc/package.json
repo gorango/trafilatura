@@ -9,6 +9,7 @@
     "trafilatura.win32-arm64-msvc.node"
   ],
   "description": "Fast and accurate web content extraction",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gorango/trafilatura.git"
