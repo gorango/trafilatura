@@ -167,6 +167,10 @@ npm run build
 npm test
 ```
 
+## License
+
+MIT
+
 ## Acknowledgments
 
 - [trafilatura](https://github.com/adbar/trafilatura) - Original Python implementation by Adrien Barbaresi
