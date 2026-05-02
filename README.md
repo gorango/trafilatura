@@ -25,7 +25,7 @@ npm install trafilatura
 ## Usage
 
 ```javascript
-import { extract, extractWithOptions } from 'trafilatura'
+import { extract } from 'trafilatura'
 
 const html = `
 <html>
@@ -70,7 +70,7 @@ console.log(result.images)
 import { extractWithOptions } from 'trafilatura'
 
 const result = extractWithOptions(html, {
-  pageType: 'product',  // Force product page extraction
+  pageType: 'product', // Force product page extraction
 })
 ```
 
@@ -105,51 +105,51 @@ Extract content from Buffer with options.
 
 ## ExtractResult
 
-| Field | Type | Description |
-|-------|------|-------------|
-| contentText | string? | Main content as plain text |
-| contentHtml | string? | Main content as HTML |
-| contentMarkdown | string? | Main content as Markdown |
-| commentsText | string? | Comments section as text |
-| commentsHtml | string? | Comments section as HTML |
-| images | ImageData[] | Extracted images |
-| metadata | Metadata | Extracted metadata |
-| classificationConfidence | number? | ML classifier confidence (0.0-1.0) |
-| extractionQuality | number | Extraction quality confidence (0.0-1.0) |
-| warnings | string[] | Processing warnings |
+| Field                    | Type        | Description                             |
+| ------------------------ | ----------- | --------------------------------------- |
+| contentText              | string?     | Main content as plain text              |
+| contentHtml              | string?     | Main content as HTML                    |
+| contentMarkdown          | string?     | Main content as Markdown                |
+| commentsText             | string?     | Comments section as text                |
+| commentsHtml             | string?     | Comments section as HTML                |
+| images                   | ImageData[] | Extracted images                        |
+| metadata                 | Metadata    | Extracted metadata                      |
+| classificationConfidence | number?     | ML classifier confidence (0.0-1.0)      |
+| extractionQuality        | number      | Extraction quality confidence (0.0-1.0) |
+| warnings                 | string[]    | Processing warnings                     |
 
 ## Options
 
-| Option | Type | Description |
-|--------|------|-------------|
-| includeComments | boolean | Include comments in output |
-| includeTables | boolean | Include tables |
-| includeImages | boolean | Include images |
-| includeLinks | boolean | Include links |
-| favorPrecision | boolean | Favor precision over recall |
-| favorRecall | boolean | Favor recall over precision |
-| targetLanguage | string | Target language code |
-| url | string | Source URL |
-| authorBlacklist | string[] | Author names to exclude |
-| deduplicate | boolean | Remove duplicate content |
-| minExtractedSize | number | Minimum extracted content size |
-| minExtractedLen | number | Minimum extracted length |
-| maxExtractedLen | number | Maximum extracted length |
-| minOutputSize | number | Minimum output size |
-| minOutputCommSize | number | Minimum comments size |
-| minScore | number | Minimum quality score |
-| maxDuplicateRatio | number | Max duplicate ratio threshold |
-| maxLinkDensity | number | Max link density threshold |
-| minParagraphCluster | number | Min paragraph cluster size |
-| includeFormatting | boolean | Include text formatting |
-| onlyWithMetadata | boolean | Only extract pages with metadata |
-| maxTreeDepth | number | Maximum DOM tree depth |
-| minWordLength | number | Minimum word length |
-| useFallbackExtraction | boolean | Use fallback extraction |
-| dedupCacheSize | number | Deduplication cache size |
-| includeTitleInContent | boolean | Include title in content |
-| outputMarkdown | boolean | Output as Markdown |
-| pageType | string | Override page type |
+| Option                | Type     | Description                      |
+| --------------------- | -------- | -------------------------------- |
+| includeComments       | boolean  | Include comments in output       |
+| includeTables         | boolean  | Include tables                   |
+| includeImages         | boolean  | Include images                   |
+| includeLinks          | boolean  | Include links                    |
+| favorPrecision        | boolean  | Favor precision over recall      |
+| favorRecall           | boolean  | Favor recall over precision      |
+| targetLanguage        | string   | Target language code             |
+| url                   | string   | Source URL                       |
+| authorBlacklist       | string[] | Author names to exclude          |
+| deduplicate           | boolean  | Remove duplicate content         |
+| minExtractedSize      | number   | Minimum extracted content size   |
+| minExtractedLen       | number   | Minimum extracted length         |
+| maxExtractedLen       | number   | Maximum extracted length         |
+| minOutputSize         | number   | Minimum output size              |
+| minOutputCommSize     | number   | Minimum comments size            |
+| minScore              | number   | Minimum quality score            |
+| maxDuplicateRatio     | number   | Max duplicate ratio threshold    |
+| maxLinkDensity        | number   | Max link density threshold       |
+| minParagraphCluster   | number   | Min paragraph cluster size       |
+| includeFormatting     | boolean  | Include text formatting          |
+| onlyWithMetadata      | boolean  | Only extract pages with metadata |
+| maxTreeDepth          | number   | Maximum DOM tree depth           |
+| minWordLength         | number   | Minimum word length              |
+| useFallbackExtraction | boolean  | Use fallback extraction          |
+| dedupCacheSize        | number   | Deduplication cache size         |
+| includeTitleInContent | boolean  | Include title in content         |
+| outputMarkdown        | boolean  | Output as Markdown               |
+| pageType              | string   | Override page type               |
 
 ## Build from Source
 
@@ -175,5 +175,3 @@ MIT
 
 - [trafilatura](https://github.com/adbar/trafilatura) - Original Python implementation by Adrien Barbaresi
 - [rs-trafilatura](https://github.com/Murrough-Foley/rs-trafilatura) - Rust port by Murrough Foley
-- [go-trafilatura](https://github.com/markusmobius/go-trafilatura) - Go port by Markus Mobius
-- [dom_query](https://github.com/niklak/dom_query) - DOM manipulation library
