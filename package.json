@@ -16,6 +16,8 @@
   "scripts": {
     "build": "napi build --platform --release --esm --output-dir lib",
     "test": "node --test lib/index.test.js",
+    "bump": "npm version patch --no-git-tag-version",
+    "postversion": "npx napi create-npm-dirs && npm run build && npm run prepublishOnly && npm install",
     "artifacts": "napi artifacts",
     "prepublishOnly": "napi prepublish -t npm"
   },
