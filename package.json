@@ -1,6 +1,6 @@
 {
   "name": "trafilatura",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Fast and accurate web content extraction",
   "license": "MIT",
   "repository": {
@@ -26,12 +26,12 @@
     "@types/node": "^25.6.0"
   },
   "optionalDependencies": {
-    "trafilatura-darwin-arm64": "0.1.0",
-    "trafilatura-darwin-x64": "0.1.0",
-    "trafilatura-linux-arm64-gnu": "0.1.0",
-    "trafilatura-linux-x64-gnu": "0.1.0",
-    "trafilatura-win32-arm64-msvc": "0.1.0",
-    "trafilatura-win32-x64-msvc": "0.1.0"
+    "trafilatura-darwin-arm64": "0.1.1",
+    "trafilatura-darwin-x64": "0.1.1",
+    "trafilatura-linux-arm64-gnu": "0.1.1",
+    "trafilatura-linux-x64-gnu": "0.1.1",
+    "trafilatura-win32-arm64-msvc": "0.1.1",
+    "trafilatura-win32-x64-msvc": "0.1.1"
   },
   "napi": {
     "binaryName": "trafilatura",
