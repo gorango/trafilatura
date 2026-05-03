@@ -90,6 +90,7 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/')
+    environment: npm
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
@@ -115,10 +116,8 @@ jobs:
           for dir in npm/*; do
             if [ -d "$dir" ]; then
               echo "Publishing $dir..."
-              (cd "$dir" && npm publish --access public)
+              (cd "$dir" && npm publish --provenance --access public)
             fi
           done
           echo "Publishing root package..."
-          npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          npm publish --provenance --access public
