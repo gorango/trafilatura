@@ -51,9 +51,9 @@ console.log('Quality:', result.extractionQuality)
 ### With Options
 
 ```javascript
-import { extractWithOptions } from 'trafilatura'
+import { extract } from 'trafilatura'
 
-const result = extractWithOptions(html, {
+const result = extract(html, {
   outputMarkdown: true,
   includeImages: true,
   favorPrecision: true,
@@ -67,9 +67,9 @@ console.log(result.images)
 ### Page Type Override
 
 ```javascript
-import { extractWithOptions } from 'trafilatura'
+import { extract } from 'trafilatura'
 
-const result = extractWithOptions(html, {
+const result = extract(html, {
   pageType: 'product', // Force product page extraction
 })
 ```
@@ -82,26 +82,18 @@ For HTML with unknown encoding:
 import { extractBytes } from 'trafilatura'
 
 const htmlBuffer = await fs.promises.readFile('page.html')
-const result = extractBytes(htmlBuffer)
+const result = extractBytes(htmlBuffer, { url: 'https://example.com' })
 ```
 
 ## API
 
-### extract(html: string): ExtractResult
+### extract(html: string, options?: Options): ExtractResult
 
-Extract content from HTML string.
+Extract content from HTML string with optional options.
 
-### extractWithOptions(html: string, options?: Options): ExtractResult
+### extractBytes(buffer: Buffer, options?: Options): ExtractResult
 
-Extract content with options.
-
-### extractBytes(buffer: Buffer): ExtractResult
-
-Extract content from Buffer (handles encoding detection).
-
-### extractBytesWithOptions(buffer: Buffer, options?: Options): ExtractResult
-
-Extract content from Buffer with options.
+Extract content from Buffer (handles encoding detection) with optional options.
 
 ## ExtractResult
 

@@ -10,15 +10,7 @@ use rs_trafilatura::Options;
 use napi_derive::napi;
 
 #[napi]
-pub fn extract(html: String) -> NapiResult<ExtractResultNapi> {
-    use rs_trafilatura::extract;
-    extract(&html)
-        .map(ExtractResultNapi::from)
-        .map_err(|e| napi::Error::from_reason(e.to_string()))
-}
-
-#[napi]
-pub fn extract_with_options(
+pub fn extract(
     html: String,
     options: Option<OptionsNapi>,
 ) -> NapiResult<ExtractResultNapi> {
@@ -35,18 +27,6 @@ pub fn extract_with_options(
 
 #[napi]
 pub fn extract_bytes(
-    html: Buffer,
-) -> NapiResult<ExtractResultNapi> {
-    use rs_trafilatura::extract_bytes;
-
-    let html_bytes: Vec<u8> = html.into();
-    extract_bytes(&html_bytes)
-        .map(ExtractResultNapi::from)
-        .map_err(|e| napi::Error::from_reason(e.to_string()))
-}
-
-#[napi]
-pub fn extract_bytes_with_options(
     html: Buffer,
     options: Option<OptionsNapi>,
 ) -> NapiResult<ExtractResultNapi> {
