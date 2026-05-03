@@ -1,11 +1,18 @@
 {
   "name": "trafilatura",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Fast and accurate web content extraction",
+  "keywords": [
+    "content-extraction",
+    "crawling",
+    "nlp",
+    "scraping",
+    "trafilatura"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gorango/trafilatura.git"
+    "url": "git+https://github.com/gorango/napi-rs-trafilatura.git"
   },
   "files": [
     "lib"
@@ -22,16 +29,15 @@
     "prepublishOnly": "napi prepublish -t npm"
   },
   "devDependencies": {
-    "@napi-rs/cli": "^3.6.2",
-    "@types/node": "^25.6.0"
+    "@napi-rs/cli": "^3.6.2"
   },
   "optionalDependencies": {
-    "trafilatura-darwin-arm64": "0.1.1",
-    "trafilatura-darwin-x64": "0.1.1",
-    "trafilatura-linux-arm64-gnu": "0.1.1",
-    "trafilatura-linux-x64-gnu": "0.1.1",
-    "trafilatura-win32-arm64-msvc": "0.1.1",
-    "trafilatura-win32-x64-msvc": "0.1.1"
+    "trafilatura-darwin-arm64": "0.1.2",
+    "trafilatura-darwin-x64": "0.1.2",
+    "trafilatura-linux-arm64-gnu": "0.1.2",
+    "trafilatura-linux-x64-gnu": "0.1.2",
+    "trafilatura-win32-arm64-msvc": "0.1.2",
+    "trafilatura-win32-x64-msvc": "0.1.2"
   },
   "napi": {
     "binaryName": "trafilatura",

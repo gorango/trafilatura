@@ -1,8 +1,8 @@
-# trafilatura
+# napi-rs-trafilatura
 
 Fast and accurate web content extraction for Node.js.
 
-A high-performance NAPI bindings for [rs-trafilatura](https://github.com/Murrough-Foley/rs-trafilatura) - a Rust port of [trafilatura](https://github.com/adbar/trafilatura). Extracts clean, readable content from web pages while removing boilerplate, navigation, and advertisements.
+High-performance NAPI bindings for [rs-trafilatura](https://github.com/Murrough-Foley/rs-trafilatura) - a Rust port of [trafilatura](https://github.com/adbar/trafilatura). Extracts clean, readable content from web pages while removing boilerplate, navigation, and advertisements.
 
 ## Features
 

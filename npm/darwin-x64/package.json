@@ -1,6 +1,6 @@
 {
   "name": "trafilatura-darwin-x64",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "cpu": [
     "x64"
   ],
@@ -12,7 +12,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gorango/trafilatura.git"
+    "url": "git+https://github.com/gorango/napi-rs-trafilatura.git"
   },
   "os": [
     "darwin"
