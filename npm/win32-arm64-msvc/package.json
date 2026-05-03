@@ -1,6 +1,6 @@
 {
   "name": "trafilatura-win32-arm64-msvc",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "cpu": [
     "arm64"
   ],
@@ -9,6 +9,13 @@
     "trafilatura.win32-arm64-msvc.node"
   ],
   "description": "Fast and accurate web content extraction",
+  "keywords": [
+    "content-extraction",
+    "crawling",
+    "nlp",
+    "scraping",
+    "trafilatura"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",

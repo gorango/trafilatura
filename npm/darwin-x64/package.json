@@ -1,6 +1,6 @@
 {
   "name": "trafilatura-darwin-x64",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "cpu": [
     "x64"
   ],
@@ -9,6 +9,13 @@
     "trafilatura.darwin-x64.node"
   ],
   "description": "Fast and accurate web content extraction",
+  "keywords": [
+    "content-extraction",
+    "crawling",
+    "nlp",
+    "scraping",
+    "trafilatura"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
